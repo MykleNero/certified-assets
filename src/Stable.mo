@@ -19,7 +19,7 @@ import Vector "mo:vector";
 import Itertools "mo:itertools/Iter";
 import RevIter "mo:itertools/RevIter";
 
-import Base64 "mo:encoding/Base64";
+import BaseX "mo:base-x-encoder";
 
 import Utils "Utils";
 import EndpointModule "Endpoint";
@@ -864,9 +864,7 @@ module Module {
     };
 
     func base64(data : Blob) : Text {
-        let res = Base64.StdEncoding.encode(Blob.toArray(data));
-        let ?utf8 = Text.decodeUtf8(Blob.fromArray(res)) else Debug.trap("base64 encoding failed");
-        utf8;
+        BaseX.toBase64(data.vals(), #standard({includePadding = true}));
     };
 
     public module MerkleTreeOps {

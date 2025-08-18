@@ -13,7 +13,7 @@ import Nat16 "mo:base/Nat16";
 import SHA256 "mo:sha2/Sha256";
 import Itertools "mo:itertools/Iter";
 import Serde "mo:serde";
-import Base64 "mo:encoding/Base64";
+import BaseX "mo:base-x-encoder";
 import RepIndyHash "mo:rep-indy-hash";
 
 import CertifiedAssets "../src";
