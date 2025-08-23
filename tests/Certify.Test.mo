@@ -5,8 +5,8 @@ import { suite; test } "mo:test";
 import CertifiedAssets "../src/Stable";
 import Fuzz "mo:fuzz";
 
-actor {
-    let fuzz = Fuzz.Fuzz();
+persistent actor {
+    transient let fuzz = Fuzz.Fuzz();
 
     func get_endpoint(url : Text, is_fallback : Bool) : CertifiedAssets.Endpoint {
         let content : Blob = "Hello, World!";

@@ -6,7 +6,9 @@ import Text "mo:base/Text";
 import Nat8 "mo:base/Nat8";
 import Nat32 "mo:base/Nat32";
 import Option "mo:base/Option";
-import Hex "mo:encoding/Hex";
+import Iter "mo:base/Iter";
+import BaseX "mo:base-x-encoder";
+
 module {
     type Result<T, E> = Result.Result<T, E>;
 
@@ -60,7 +62,7 @@ module {
         for (sp in iter) {
             let hex = subText(sp, 0, 2);
 
-            switch (Hex.decode(hex)) {
+            switch (BaseX.fromHex(hex, {prefix = #none})) {
                 case (#ok(symbols)) {
                     let char = (nat8ToChar(symbols[0]));
                     decodedURI := decodedURI # Char.toText(char) #
@@ -93,7 +95,7 @@ module {
             if (Text.contains(cAsText, matchAny("'()*-._~")) or Char.isAlphabetic(c) or Char.isDigit(c)) {
                 encoded := encoded # Char.toText(c);
             } else {
-                let hex = Hex.encodeByte(charToNat8(c));
+                let hex = BaseX.toHex(Iter.make(charToNat8(c)), {prefix = #none; isUpper = false});
                 encoded := encoded # "%" # hex;
             };
         };
