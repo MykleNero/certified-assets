@@ -26,4 +26,4 @@ itertools = "0.2.2"
 
 [toolchain]
 wasmtime = "24.0.0"
-moc = "0.15.1"
+moc = "1.6.0"
