@@ -183,10 +183,10 @@ module {
                 url = if (_url.original == "") "" else _url.path.original;
                 hash = _hash;
                 method = _method;
-                query_params = if (_no_request_certification)[] else Buffer.toArray(_queries);
-                request_headers = if (_no_request_certification)[] else Buffer.toArray(_request_headers);
+                query_params = if (_no_request_certification) [] else Buffer.toArray(_queries);
+                request_headers = if (_no_request_certification) [] else Buffer.toArray(_request_headers);
                 status = _status;
-                response_headers = if (_no_certification)[] else Buffer.toArray(_response_headers);
+                response_headers = if (_no_certification) [] else Buffer.toArray(_response_headers);
                 no_certification = _no_certification;
                 no_request_certification = _no_request_certification;
                 is_fallback_path = _is_fallback_path;
